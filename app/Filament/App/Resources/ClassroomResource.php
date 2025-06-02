@@ -52,7 +52,7 @@ class ClassroomResource extends Resource
                 //
             ])
             ->modifyQueryUsing(function (Builder $query) {
-                if (auth()->user()->role_id === Role::IS_ADMINISTRATOR) {
+                if (auth()->user()->role_id == Role::IS_ADMINISTRATOR) {
                     return $query;
                 }
                 
