@@ -22,7 +22,7 @@ class ClassroomPolicy
      */
     public function view(User $user, Classroom $classroom): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $classroom->users->contains($user);
+        return $user->role_id == Role::IS_ADMINISTRATOR || $classroom->users->contains($user);
     }
 
     /**
@@ -30,7 +30,7 @@ class ClassroomPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -38,7 +38,7 @@ class ClassroomPolicy
      */
     public function update(User $user, Classroom $classroom): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $classroom->users->contains($user));
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $classroom->users->contains($user));
     }
 
     /**
@@ -46,7 +46,7 @@ class ClassroomPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -54,7 +54,7 @@ class ClassroomPolicy
      */
     public function delete(User $user, Classroom $classroom): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -62,7 +62,7 @@ class ClassroomPolicy
      */
     public function restore(User $user, Classroom $classroom): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -70,6 +70,6 @@ class ClassroomPolicy
      */
     public function forceDelete(User $user, Classroom $classroom): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 }

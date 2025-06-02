@@ -14,7 +14,7 @@ class AnswerOptionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $user->role_id === Role::IS_PENGAJAR;
+        return $user->role_id == Role::IS_ADMINISTRATOR || $user->role_id == Role::IS_PENGAJAR;
     }
 
     /**
@@ -22,8 +22,8 @@ class AnswerOptionPolicy
      */
     public function view(User $user, AnswerOption $answerOption): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR ||
-               ($user->role_id === Role::IS_PENGAJAR && $answerOption->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR ||
+               ($user->role_id == Role::IS_PENGAJAR && $answerOption->created_by == $user->id);
     }
 
     /**
@@ -31,7 +31,7 @@ class AnswerOptionPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $user->role_id === Role::IS_PENGAJAR;
+        return $user->role_id == Role::IS_ADMINISTRATOR || $user->role_id == Role::IS_PENGAJAR;
     }
 
     /**
@@ -39,8 +39,8 @@ class AnswerOptionPolicy
      */
     public function update(User $user, AnswerOption $answerOption): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR ||
-               ($user->role_id === Role::IS_PENGAJAR && $answerOption->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR ||
+               ($user->role_id == Role::IS_PENGAJAR && $answerOption->created_by == $user->id);
     }
 
     /**
@@ -48,7 +48,7 @@ class AnswerOptionPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -56,8 +56,8 @@ class AnswerOptionPolicy
      */
     public function delete(User $user, AnswerOption $answerOption): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR ||
-               ($user->role_id === Role::IS_PENGAJAR && $answerOption->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR ||
+               ($user->role_id == Role::IS_PENGAJAR && $answerOption->created_by == $user->id);
     }
 
     /**
@@ -65,7 +65,7 @@ class AnswerOptionPolicy
      */
     public function restore(User $user, AnswerOption $answerOption): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -73,6 +73,6 @@ class AnswerOptionPolicy
      */
     public function forceDelete(User $user, AnswerOption $answerOption): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 }

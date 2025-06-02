@@ -22,7 +22,7 @@ class ExamPolicy
      */
     public function view(User $user, Exam $exam): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $exam->classroom->users->contains($user);
+        return $user->role_id == Role::IS_ADMINISTRATOR || $exam->classroom->users->contains($user);
     }
 
     /**
@@ -30,7 +30,7 @@ class ExamPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $user->role_id === Role::IS_PENGAJAR;
+        return $user->role_id == Role::IS_ADMINISTRATOR || $user->role_id == Role::IS_PENGAJAR;
     }
 
     /**
@@ -38,7 +38,7 @@ class ExamPolicy
      */
     public function update(User $user, Exam $exam): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $user->id === $exam->created_by);
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $user->id == $exam->created_by);
     }
 
     /**
@@ -46,7 +46,7 @@ class ExamPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -54,7 +54,7 @@ class ExamPolicy
      */
     public function delete(User $user, Exam $exam): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $user->id === $exam->created_by);
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $user->id == $exam->created_by);
     }
 
     /**
@@ -62,7 +62,7 @@ class ExamPolicy
      */
     public function restore(User $user, Exam $exam): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -70,6 +70,6 @@ class ExamPolicy
      */
     public function forceDelete(User $user, Exam $exam): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 }

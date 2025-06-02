@@ -14,7 +14,7 @@ class QuestionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $user->role_id === Role::IS_PENGAJAR;
+        return $user->role_id == Role::IS_ADMINISTRATOR || $user->role_id == Role::IS_PENGAJAR;
     }
 
     /**
@@ -22,7 +22,7 @@ class QuestionPolicy
      */
     public function view(User $user, Question $question): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $question->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $question->created_by == $user->id);
     }
 
     /**
@@ -30,7 +30,7 @@ class QuestionPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || $user->role_id === Role::IS_PENGAJAR;
+        return $user->role_id == Role::IS_ADMINISTRATOR || $user->role_id == Role::IS_PENGAJAR;
     }
 
     /**
@@ -38,7 +38,7 @@ class QuestionPolicy
      */
     public function update(User $user, Question $question): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $question->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $question->created_by == $user->id);
     }
 
     /**
@@ -46,7 +46,7 @@ class QuestionPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -54,7 +54,7 @@ class QuestionPolicy
      */
     public function delete(User $user, Question $question): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR || ($user->role_id === Role::IS_PENGAJAR && $question->created_by === $user->id);
+        return $user->role_id == Role::IS_ADMINISTRATOR || ($user->role_id == Role::IS_PENGAJAR && $question->created_by == $user->id);
     }
 
     /**
@@ -62,7 +62,7 @@ class QuestionPolicy
      */
     public function restore(User $user, Question $question): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -70,6 +70,6 @@ class QuestionPolicy
      */
     public function forceDelete(User $user, Question $question): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 }

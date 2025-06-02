@@ -30,7 +30,7 @@ class AnnouncementPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -38,7 +38,7 @@ class AnnouncementPolicy
      */
     public function update(User $user, Announcement $announcement): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -46,7 +46,7 @@ class AnnouncementPolicy
      */
     public function delete(User $user, Announcement $announcement): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -54,7 +54,7 @@ class AnnouncementPolicy
      */
     public function restore(User $user, Announcement $announcement): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 
     /**
@@ -62,6 +62,6 @@ class AnnouncementPolicy
      */
     public function forceDelete(User $user, Announcement $announcement): bool
     {
-        return $user->role_id === Role::IS_ADMINISTRATOR;
+        return $user->role_id == Role::IS_ADMINISTRATOR;
     }
 }
