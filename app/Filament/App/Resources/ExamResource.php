@@ -87,7 +87,7 @@ class ExamResource extends Resource
                         'filament.app.resources.exam-resource.pages.actions.take-exam',
                         ['record' => $record]
                     ))
-                    ->modalSubmitActionLabel(fn (Exam $record) => $record->attempts->count() > 0 ? 'Review Ujian' : 'Mulai Ujian')
+                    ->modalSubmitActionLabel(fn (Exam $record) => $record->attempts->where('user_id', auth()->id())->count() > 0 ? 'Review Ujian' : 'Mulai Ujian')
                     ->modalAlignment(Alignment::Start)
                     ->visible(fn (Exam $record) => $record->isAvailable()),
             ])

@@ -23,6 +23,12 @@ class Exam extends Model
         'created_by'
     ];
 
+    protected function casts() {
+        return [
+            'duration_minutes' => 'int'
+        ];
+    }
+
     public function classroom() {
         return $this->belongsTo(Classroom::class);
     }

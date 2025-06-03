@@ -40,7 +40,6 @@ class TakeExam extends Page
 
         if ($this->attempts->count() > 0) {
             $attemptInProgress = $this->attempts
-                ->where('user_id', auth()->id())
                 ->where('status', 'in_progress')
                 ->first();
             
@@ -129,7 +128,10 @@ class TakeExam extends Page
     #[Computed]
     public function attempts()
     {
-        return $this->record->attempts->load('responses', 'result');
+        return $this->record
+            ->attempts
+            ->where('user_id', auth()->id())
+            ->load('responses', 'result');
     }
 
     #[Computed]
