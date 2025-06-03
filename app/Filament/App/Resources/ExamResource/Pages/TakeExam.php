@@ -99,7 +99,7 @@ class TakeExam extends Page
 
     public function submit()
     {
-        $points_earned = $this->attempt->responses->sum('points_earned');
+        $points_earned = is_null($this->attempt->responses) ? 0 : $this->attempt->responses->sum('points_earned');
         $max_points = $this->questions->sum('points');
 
         $this->attempt->update([
@@ -112,7 +112,7 @@ class TakeExam extends Page
         ], [
             'points_earned' => $points_earned,
             'total_points' => $max_points,
-            'percentage' => ($points_earned / $max_points) * 100,
+            'percentage' => ($points_earned == 0) ? 0 : ($points_earned / $max_points) * 100,
             'passed' => ($points_earned >= $this->record->passing_score) ? true : false,
             'completed_at' => now(),
         ]);

@@ -124,12 +124,12 @@
                         @foreach ($this->attempts as $attempt)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $attempt->responses->where('points_earned', '>', 0)->count() }}</td>
-                            <td>{{ $attempt->responses->where('points_earned', 0)->count() }}</td>
+                            <td>{{ is_null($attempt->responses) ? 0 : $attempt->responses->where('points_earned', '>', 0)->count() }}</td>
+                            <td>{{ is_null($attempt->responses) ? 0 : $attempt->responses->where('points_earned', 0)->count() }}</td>
                             <td
                                 class="{{ ($attempt->result->points_earned >= $this->getRecord()->passing_score) ? 'text-green-600 font-bold' : 'text-red-600 font-bold' }}"
                                 >
-                                {{ $attempt->result->points_earned }}</td>
+                                {{ is_null($attempt->result) ? 0 : $attempt->result->points_earned }}</td>
                         </tr>
                         @endforeach
                     </tbody>
