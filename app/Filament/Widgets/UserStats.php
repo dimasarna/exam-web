@@ -31,6 +31,6 @@ class UserStats extends BaseWidget
 
     public static function canView(): bool
     {
-        return auth()->user()->role_id === Role::IS_ADMINISTRATOR;
+        return auth()->user()->role_id == Role::IS_ADMINISTRATOR;
     }
 }

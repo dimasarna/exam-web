@@ -91,7 +91,7 @@ class ExamChart extends ChartWidget
 
     public static function canView(): bool
     {
-        return auth()->user()->role_id === Role::IS_ADMINISTRATOR ||
-            auth()->user()->role_id === Role::IS_PENGAJAR;
+        return auth()->user()->role_id == Role::IS_ADMINISTRATOR ||
+            auth()->user()->role_id == Role::IS_PENGAJAR;
     }
 }
